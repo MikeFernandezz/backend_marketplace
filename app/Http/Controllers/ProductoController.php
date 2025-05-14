@@ -15,4 +15,9 @@ class ProductoController extends Controller
         $producto = Producto::create($request->all());
         return response()->json($producto, 201);
     }
+
+    public function showProductos() {
+        $productos = Producto::all();
+        return view('productos', compact('productos'));
+    }
 }
