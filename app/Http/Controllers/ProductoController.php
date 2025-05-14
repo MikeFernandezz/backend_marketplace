@@ -20,4 +20,16 @@ class ProductoController extends Controller
         $productos = Producto::all();
         return view('productos', compact('productos'));
     }
+
+    public function update(Request $request, $id) {
+        $producto = Producto::findOrFail($id);
+        $producto->update($request->all());
+        return response()->json($producto);
+    }
+
+    public function destroy($id) {
+        $producto = Producto::findOrFail($id);
+        $producto->delete();
+        return response()->json(['message' => 'Producto eliminado correctamente']);
+    }
 }
