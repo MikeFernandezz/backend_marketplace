@@ -12,5 +12,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
+Route::get('/bootstrap-test', function () { return view('bootstrap_test'); });
