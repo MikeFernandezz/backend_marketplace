@@ -30,6 +30,15 @@
                 <label for="archivo">Archivo</label>
                 <input type="text" id="archivo" name="archivo" class="form-control">
             </div>
+            <div class="form-group">
+                <label for="id_categoria">Categoría</label>
+                <select id="id_categoria" name="id_categoria" class="form-control" required>
+                    <option value="">Seleccione una categoría</option>
+                    @foreach (\App\Models\Categoria::all() as $categoria)
+                        <option value="{{ $categoria->id_categoria }}">{{ $categoria->nombre_categoria }}</option>
+                    @endforeach
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
 
@@ -41,6 +50,7 @@
                     <th>Descripción</th>
                     <th>Precio</th>
                     <th>Archivo</th>
+                    <th>Categoría</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -52,6 +62,7 @@
                         <td>{{ $producto->descripcion }}</td>
                         <td>{{ $producto->precio }}</td>
                         <td><a href="{{ asset('storage/' . $producto->archivo) }}" target="_blank">Ver archivo</a></td>
+                        <td>{{ $producto->categoria->nombre_categoria ?? '' }}</td>
                         <td>
                             <button class="btn btn-warning btn-sm" onclick="editarProducto({{ $producto }})">Editar</button>
                             <form method="POST" action="{{ route('productos.destroy', $producto->id) }}" style="display:inline;">
@@ -72,6 +83,7 @@
             document.getElementById('nombre').value = producto.nombre;
             document.getElementById('descripcion').value = producto.descripcion;
             document.getElementById('precio').value = producto.precio;
+            document.getElementById('id_categoria').value = producto.id_categoria;
             document.getElementById('productoForm').action = `{{ url('productos') }}/${producto.id}`;
             document.getElementById('productoForm').method = 'POST';
             const methodInput = document.createElement('input');

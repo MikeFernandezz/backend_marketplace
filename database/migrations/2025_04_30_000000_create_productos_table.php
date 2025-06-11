@@ -12,6 +12,8 @@ return new class extends Migration {
             $table->text('descripcion')->nullable();
             $table->decimal('precio', 8, 2);
             $table->string('archivo')->nullable();
+            $table->unsignedBigInteger('id_categoria');
+            $table->foreign('id_categoria')->references('id_categoria')->on('categorias')->onDelete('cascade');
             $table->timestamps();
         });
     }
