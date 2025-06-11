@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
+use App\Models\Producto;
 
 Route::get('/productos', [ProductoController::class, 'showProductos']);
 Route::post('/productos', [ProductoController::class, 'store'])->name('productos.store');
@@ -12,7 +13,8 @@ Route::delete('/productos/{id}', [ProductoController::class, 'destroy'])->name('
 Route::resource('categorias', CategoriaController::class)->except(['create', 'edit']);
 
 Route::get('/', function () {
-    return view('welcome');
+    $productos = Producto::with('categoria')->get();
+    return view('inicio', compact('productos'));
 });
 
 Route::get('/bootstrap-test', function () { return view('bootstrap_test'); });
