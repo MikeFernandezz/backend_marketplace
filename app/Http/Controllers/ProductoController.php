@@ -8,7 +8,12 @@ use Illuminate\Http\Request;
 class ProductoController extends Controller
 {
     public function index() {
-        return Producto::with('categoria')->get();
+        $productos = Producto::with('categoria')->get();
+        return view('productos.index', compact('productos'));
+    }
+
+    public function create() {
+        return view('productos.create');
     }
 
     public function store(Request $request) {
@@ -20,17 +25,17 @@ class ProductoController extends Controller
             'id_categoria' => 'required|exists:categorias,id_categoria',
         ]);
         $producto = Producto::create($validated);
-        return response()->json($producto, 201);
+        return redirect()->route('admin.productos.index')->with('success', 'Producto creado correctamente');
     }
 
     public function show($id) {
         $producto = Producto::with('categoria')->findOrFail($id);
-        return response()->json($producto);
+        return view('productos.show', compact('producto'));
     }
 
-    public function showProductos() {
-        $productos = Producto::with('categoria')->get();
-        return view('productos', compact('productos'));
+    public function edit($id) {
+        $producto = Producto::findOrFail($id);
+        return view('productos.edit', compact('producto'));
     }
 
     public function update(Request $request, $id) {
@@ -43,12 +48,12 @@ class ProductoController extends Controller
             'id_categoria' => 'sometimes|required|exists:categorias,id_categoria',
         ]);
         $producto->update($validated);
-        return response()->json($producto);
+        return redirect()->route('admin.productos.show', $producto->id)->with('success', 'Producto actualizado correctamente');
     }
 
     public function destroy($id) {
         $producto = Producto::findOrFail($id);
         $producto->delete();
-        return response()->json(['message' => 'Producto eliminado correctamente']);
+        return redirect()->route('admin.productos.index')->with('success', 'Producto eliminado correctamente');
     }
 }

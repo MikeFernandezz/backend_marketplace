@@ -5,12 +5,26 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Models\Producto;
 
-Route::get('/productos', [ProductoController::class, 'showProductos']);
-Route::post('/productos', [ProductoController::class, 'store'])->name('productos.store');
-Route::put('/productos/{id}', [ProductoController::class, 'update'])->name('productos.update');
-Route::delete('/productos/{id}', [ProductoController::class, 'destroy'])->name('productos.destroy');
-
-Route::resource('categorias', CategoriaController::class)->except(['create', 'edit']);
+Route::prefix('admin')->group(function () {
+    Route::resource('productos', ProductoController::class)->names([
+        'index' => 'admin.productos.index',
+        'create' => 'admin.productos.create',
+        'store' => 'admin.productos.store',
+        'show' => 'admin.productos.show',
+        'edit' => 'admin.productos.edit',
+        'update' => 'admin.productos.update',
+        'destroy' => 'admin.productos.destroy',
+    ]);
+    Route::resource('categorias', CategoriaController::class)->names([
+        'index' => 'admin.categorias.index',
+        'create' => 'admin.categorias.create',
+        'store' => 'admin.categorias.store',
+        'show' => 'admin.categorias.show',
+        'edit' => 'admin.categorias.edit',
+        'update' => 'admin.categorias.update',
+        'destroy' => 'admin.categorias.destroy',
+    ]);
+});
 
 Route::get('/', function () {
     $productos = Producto::with('categoria')->get();
