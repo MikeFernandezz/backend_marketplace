@@ -9,6 +9,7 @@ return new class extends Migration {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id('id_usuario');
             $table->string('nombre', 100);
+            $table->string('apellidos', 100); 
             $table->string('correo', 100)->unique();
             $table->string('contrasena', 255);
             $table->enum('rol', ['cliente', 'admin'])->default('cliente');

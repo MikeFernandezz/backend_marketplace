@@ -12,7 +12,7 @@
             <p class="card-text"><strong>Archivo:</strong> <a href="{{ asset('storage/' . $producto->archivo) }}" target="_blank">Ver archivo</a></p>
             <a href="{{ route('admin.productos.edit', $producto->id) }}" class="btn btn-warning">Editar</a>
             <a href="{{ route('admin.productos.index') }}" class="btn btn-secondary">Volver</a>
-            <a href="{{ route('admin.panel') }}" class="btn btn-secondary mt-3">Volver al Panel de Administrador</a>
+            <a href="{{ route('admin.panel') }}" class="btn btn-secondary">Volver al Panel de Administrador</a>
         </div>
     </div>
 </div>

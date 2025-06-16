@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-4">
     <h1>Crear Categoría</h1>
     <form method="POST" action="{{ route('admin.categorias.store') }}">
         @csrf
@@ -11,7 +11,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
         <a href="{{ route('admin.categorias.index') }}" class="btn btn-secondary">Cancelar</a>
+        <a href="{{ route('admin.panel') }}" class="btn btn-secondary">Volver al Panel de Administrador</a>
     </form>
-    <a href="{{ route('admin.panel') }}" class="btn btn-secondary mt-3">Volver al Panel de Administrador</a>
 </div>
 @endsection
