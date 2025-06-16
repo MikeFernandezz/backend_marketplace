@@ -9,30 +9,49 @@ class CategoriaController extends Controller
 {
     public function index()
     {
-        return response()->json(Categoria::all());
+        $categorias = Categoria::all();
+        return view('categorias.index', compact('categorias'));
     }
 
     public function show($id)
     {
-        return response()->json(Categoria::findOrFail($id));
+        $categoria = Categoria::findOrFail($id);
+        return view('categorias.show', compact('categoria'));
+    }
+
+    public function create()
+    {
+        return view('categorias.create');
     }
 
     public function store(Request $request)
     {
-        $categoria = Categoria::create($request->all());
-        return response()->json($categoria, 201);
+        $validated = $request->validate([
+            'nombre_categoria' => 'required|string|max:255',
+        ]);
+        $categoria = Categoria::create($validated);
+        return redirect()->route('admin.categorias.index')->with('success', 'Categoría creada correctamente');
+    }
+
+    public function edit($id)
+    {
+        $categoria = Categoria::findOrFail($id);
+        return view('categorias.edit', compact('categoria'));
     }
 
     public function update(Request $request, $id)
     {
         $categoria = Categoria::findOrFail($id);
-        $categoria->update($request->all());
-        return response()->json($categoria);
+        $validated = $request->validate([
+            'nombre_categoria' => 'required|string|max:255',
+        ]);
+        $categoria->update($validated);
+        return redirect()->route('admin.categorias.show', $categoria->id_categoria)->with('success', 'Categoría actualizada correctamente');
     }
 
     public function destroy($id)
     {
         Categoria::destroy($id);
-        return response()->json(null, 204);
+        return redirect()->route('admin.categorias.index')->with('success', 'Categoría eliminada correctamente');
     }
 }

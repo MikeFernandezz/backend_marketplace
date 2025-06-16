@@ -2,33 +2,11 @@
 
 @section('content')
 <div class="container my-5">
-
-    <!-- Carrusel de novedades -->
-    <div id="cursosCarrusel" class="carousel slide mb-5" data-bs-ride="carousel">
-        <div class="carousel-inner rounded shadow">
-            <div class="carousel-item active">
-                <img src="https://via.placeholder.com/1200x400?text=¡Nuevos+Cursos+de+Programación!" class="d-block w-100" alt="Novedades 1">
-            </div>
-            <div class="carousel-item">
-                <img src="https://via.placeholder.com/1200x400?text=Aprende+Inteligencia+Artificial" class="d-block w-100" alt="Novedades 2">
-            </div>
-            <div class="carousel-item">
-                <img src="https://via.placeholder.com/1200x400?text=Descuentos+exclusivos+este+mes" class="d-block w-100" alt="Novedades 3">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#cursosCarrusel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#cursosCarrusel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-    </div>
-
-    <!-- Título principal -->
-    <div class="text-center mb-5">
-        <h1 class="fw-bold text-primary-emphasis">Bienvenido al Marketplace de Cursos</h1>
-        <p class="fs-5 text-muted">Cursos de alta calidad para tu desarrollo profesional</p>
-        <a href="#productos" class="btn btn-success btn-lg px-4">Ver productos</a>
+    <!-- Banner principal -->
+    <div class="jumbotron text-white bg-primary rounded shadow p-5 mb-5 text-center">
+        <h1 class="display-4 font-weight-bold">Bienvenido al Marketplace</h1>
+        <p class="lead">Encuentra los mejores productos al mejor precio</p>
+        <a href="#productos" class="btn btn-light btn-lg mt-3">Ver productos</a>
     </div>
 
     <!-- Productos destacados -->

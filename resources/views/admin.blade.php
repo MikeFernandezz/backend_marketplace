@@ -8,13 +8,13 @@
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url('/productos') }}">
+                        <a class="nav-link active" aria-current="page" href="{{ route('admin.productos.index') }}">
                             <span data-feather="box"></span>
                             Productos
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/categorias') }}">
+                        <a class="nav-link" href="{{ route('admin.categorias.index') }}">
                             <span data-feather="layers"></span>
                             Categorías
                         </a>
@@ -40,7 +40,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Productos</h5>
                             <p class="card-text">Gestiona los productos del marketplace.</p>
-                            <a href="{{ url('/productos') }}" class="btn btn-primary">Ir a Productos</a>
+                            <a href="{{ route('admin.productos.index') }}" class="btn btn-primary">Ir a Productos</a>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Categorías</h5>
                             <p class="card-text">Administra las categorías disponibles.</p>
-                            <a href="{{ url('/categorias') }}" class="btn btn-primary">Ir a Categorías</a>
+                            <a href="{{ route('admin.categorias.index') }}" class="btn btn-primary">Ir a Categorías</a>
                         </div>
                     </div>
                 </div>
