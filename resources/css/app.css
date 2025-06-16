@@ -1,11 +1,76 @@
-@import 'tailwindcss';
-
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
-
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+@import 'tailwindcss'; 
+ 
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php'; 
+@source '../../storage/framework/views/*.php'; 
+@source '../**/*.blade.php'; 
+@source '../**/*.js'; 
+ 
+@theme { 
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 
         'Segoe UI Symbol', 'Noto Color Emoji';
+    
+    /* Paleta de colores Sborg */
+    --color-sborg-dark: #1a1e29;
+    --color-sborg-navy: #132d46;
+    --color-sborg-emerald: #01c38e;
+    --color-sborg-white: #ffffff;
+    
+    /* Definir colores personalizados para Tailwind */
+    --color-primary-50: #f0fdf9;
+    --color-primary-100: #ccfbef;
+    --color-primary-200: #99f6e0;
+    --color-primary-300: #5eead4;
+    --color-primary-400: #2dd4bf;
+    --color-primary-500: #01c38e;
+    --color-primary-600: #059669;
+    --color-primary-700: #047857;
+    --color-primary-800: #065f46;
+    --color-primary-900: #064e3b;
+    
+    --color-dark-50: #f8fafc;
+    --color-dark-100: #f1f5f9;
+    --color-dark-200: #e2e8f0;
+    --color-dark-300: #cbd5e1;
+    --color-dark-400: #94a3b8;
+    --color-dark-500: #64748b;
+    --color-dark-600: #475569;
+    --color-dark-700: #334155;
+    --color-dark-800: #1e293b;
+    --color-dark-900: #132d46;
+    --color-dark-950: #1a1e29;
+    
+    /* Colores personalizados disponibles como utilities */
+    colors: {
+        sborg: {
+            dark: var(--color-sborg-dark);
+            navy: var(--color-sborg-navy);
+            emerald: var(--color-sborg-emerald);
+            white: var(--color-sborg-white);
+        }
+        primary: {
+            50: var(--color-primary-50);
+            100: var(--color-primary-100);
+            200: var(--color-primary-200);
+            300: var(--color-primary-300);
+            400: var(--color-primary-400);
+            500: var(--color-primary-500);
+            600: var(--color-primary-600);
+            700: var(--color-primary-700);
+            800: var(--color-primary-800);
+            900: var(--color-primary-900);
+        }
+        dark: {
+            50: var(--color-dark-50);
+            100: var(--color-dark-100);
+            200: var(--color-dark-200);
+            300: var(--color-dark-300);
+            400: var(--color-dark-400);
+            500: var(--color-dark-500);
+            600: var(--color-dark-600);
+            700: var(--color-dark-700);
+            800: var(--color-dark-800);
+            900: var(--color-dark-900);
+            950: var(--color-dark-950);
+        }
+    }
 }
