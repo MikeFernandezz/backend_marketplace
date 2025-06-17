@@ -4,6 +4,7 @@ use App\Http\AdminAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\UsuarioController;
 use App\Models\Producto;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -46,6 +47,10 @@ Route::middleware([App\Http\AdminAuthMiddleware::class])->group(function () {
             'update' => 'admin.categorias.update',
             'destroy' => 'admin.categorias.destroy',
         ]);
+        // Gestión de usuarios
+        Route::get('usuarios', [UsuarioController::class, 'adminIndex'])->name('admin.usuarios.index');
+        Route::patch('usuarios/{id}/make-admin', [UsuarioController::class, 'makeAdmin'])->name('admin.usuarios.makeAdmin');
+        Route::delete('usuarios/{id}', [UsuarioController::class, 'adminDestroy'])->name('admin.usuarios.destroy');
     });
     Route::get('/admin', function () {
         return view('admin');
@@ -64,3 +69,6 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 })->name('register');
+
+Route::post('/register', [UsuarioController::class, 'store'])->name('register.submit');
+Route::post('/login', [UsuarioController::class, 'login'])->name('login.submit');

@@ -14,9 +14,14 @@
             <a class="navbar-brand" href="/">Coursemarket</a>
         </div>
         <div class="d-flex align-items-center ms-auto">
-            <a href="{{ route('login') }}" class="text-white text-decoration-none me-3">
-                <img src="{{ asset('img/webres/acceso.png') }}" alt="Login" width="32" height="32" class="rounded-circle">
-            </a>
+            @if(session('usuario_auth'))
+                <?php $usuario = \App\Models\Usuario::find(session('usuario_auth')); ?>
+                <span class="text-white me-3">Hola, {{ $usuario ? $usuario->nombre : 'Usuario' }}</span>
+            @else
+                <a href="{{ route('login') }}" class="text-white text-decoration-none me-3">
+                    <img src="{{ asset('img/webres/acceso.png') }}" alt="Login" width="32" height="32" class="rounded-circle">
+                </a>
+            @endif
         </div>
     </div>
     </nav>

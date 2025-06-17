@@ -25,6 +25,12 @@
                             Ventas
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.usuarios.index') }}">
+                            <span data-feather="users"></span>
+                            Usuarios
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -59,6 +65,15 @@
                             <h5 class="card-title">Ventas</h5>
                             <p class="card-text">Consulta el historial de ventas.</p>
                             <a href="{{ url('/ventas') }}" class="btn btn-primary">Ver Ventas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Usuarios</h5>
+                            <p class="card-text">Gestiona y administra los usuarios del sistema.</p>
+                            <a href="{{ route('admin.usuarios.index') }}" class="btn btn-primary">Ir a Usuarios</a>
                         </div>
                     </div>
                 </div>
