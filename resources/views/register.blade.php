@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="{{ asset('estilos.css') }}" />
 </head>
 <body>
-  <img src="{{ asset('logo.png') }}" alt="Logo" class="logo-superior-derecha" />
+  <a href="{{ url('/') }}" class="d-inline-block mb-3">
+    <img src="{{ asset('img/webres/logo.png') }}" alt="CourseMarket" class="logo-superior-derecha" style="height:150px;" />
+  </a>  
 
   <div class="container py-5">
     <div class="row justify-content-center">

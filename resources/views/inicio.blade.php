@@ -12,15 +12,15 @@
 
     <!-- Carrusel de novedades -->
     <div id="cursosCarrusel" class="carousel slide mb-5" data-bs-ride="carousel">
-        <div class="carousel-inner rounded shadow">
+        <div class="carousel-inner rounded shadow" style="text-align: center;">
             <div class="carousel-item active">
-                <img src="https://via.placeholder.com/1200x400?text=¡Nuevos+Cursos+de+Programación!" class="d-block w-100" alt="Novedades 1">
+                <img src="img/productos/curso_html_css.jpg" class="d-block w-50" alt="Novedades 1">
             </div>
             <div class="carousel-item">
-                <img src="https://via.placeholder.com/1200x400?text=Aprende+Inteligencia+Artificial" class="d-block w-100" alt="Novedades 2">
+                <img src="img/productos/curso_java.jpg" class="d-block w-50" alt="Novedades 2">
             </div>
             <div class="carousel-item">
-                <img src="https://via.placeholder.com/1200x400?text=Descuentos+exclusivos+este+mes" class="d-block w-100" alt="Novedades 3">
+                <img src="img/productos/curso_python.jpg" class="d-block w-50" alt="Novedades 3">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#cursosCarrusel" data-bs-slide="prev">
