@@ -10,13 +10,8 @@
         <a href="#productos" class="btn btn-light btn-lg mt-3">Ver productos</a>
     </div>
 
-<<<<<<< HEAD
-     <!-- Carrusel de novedades -->
-     <div id="cursosCarrusel" class="carousel slide mb-5" data-bs-ride="carousel">
-=======
 <!-- Carrusel de novedades -->
     <div id="cursosCarrusel" class="carousel slide mb-5" data-bs-ride="carousel">
->>>>>>> 3e962be7d612353909ee0e6b3baf4c2ded23c652
         <div class="carousel-inner rounded shadow">
             <div class="carousel-item active">
                 <img src="https://via.placeholder.com/1200x400?text=¡Nuevos+Cursos+de+Programación!" class="d-block w-100" alt="Novedades 1">
@@ -42,11 +37,7 @@
         @forelse($productos as $producto)
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow-sm">
-<<<<<<< HEAD
-                    <img src="{{ $producto->archivo ? asset('storage/' . $producto->archivo) : 'https://via.placeholder.com/400x250' }}" class="card-img-top" alt="{{ $producto->nombre }}">
-=======
                     <img src="{{ $producto->image_path ? asset('img/productos/' . $producto->image_path) : 'https://via.placeholder.com/400x250' }}" class="card-img-top" alt="{{ $producto->nombre }}">
->>>>>>> 3e962be7d612353909ee0e6b3baf4c2ded23c652
                     <div class="card-body">
                         <h5 class="card-title">{{ $producto->nombre }}</h5>
                         <p class="card-text">{{ $producto->descripcion }}</p>
@@ -67,8 +58,5 @@
         @endforelse
     </div>
 </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 3e962be7d612353909ee0e6b3baf4c2ded23c652
 @endsection
