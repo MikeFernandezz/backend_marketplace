@@ -34,28 +34,34 @@
     <!-- Display de productos -->
     <h2 id="productos" class="mb-4">Productos destacados</h2>
     <div class="row">
-        @forelse($productos as $producto)
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <img src="{{ $producto->image_path ? asset('img/productos/' . $producto->image_path) : 'https://via.placeholder.com/400x250' }}" class="card-img-top" alt="{{ $producto->nombre }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $producto->nombre }}</h5>
-                        <p class="card-text">{{ $producto->descripcion }}</p>
-                        <span class="badge bg-success">${{ $producto->precio }}</span>
-                        @if($producto->categoria)
-                            <span class="badge bg-secondary ms-2">{{ $producto->categoria->nombre }}</span>
-                        @endif
+        @php $maxProductos = $productos->take(6); @endphp
+        @foreach($maxProductos->chunk(3) as $fila)
+            <div class="row mb-4">
+                @foreach($fila as $producto)
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="{{ $producto->image_path ? asset('img/productos/' . $producto->image_path) : 'https://via.placeholder.com/400x250' }}" class="card-img-top" alt="{{ $producto->nombre }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $producto->nombre }}</h5>
+                                <p class="card-text">{{ $producto->descripcion }}</p>
+                                <span class="badge bg-success">${{ $producto->precio }}</span>
+                                @if($producto->categoria)
+                                    <span class="badge bg-secondary ms-2">{{ $producto->categoria->nombre_categoria ?? $producto->categoria->nombre }}</span>
+                                @endif
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <a href="#" class="btn btn-primary w-100">Comprar</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-footer bg-transparent border-0">
-                        <a href="#" class="btn btn-primary w-100">Comprar</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
-        @empty
+        @endforeach
+        @if($maxProductos->isEmpty())
             <div class="col-12">
                 <div class="alert alert-info text-center">No hay productos disponibles.</div>
             </div>
-        @endforelse
+        @endif
     </div>
 </div>
 

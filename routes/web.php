@@ -72,3 +72,5 @@ Route::get('/register', function () {
 
 Route::post('/register', [UsuarioController::class, 'store'])->name('register.submit');
 Route::post('/login', [UsuarioController::class, 'login'])->name('login.submit');
+
+require __DIR__.'/categoria.php';

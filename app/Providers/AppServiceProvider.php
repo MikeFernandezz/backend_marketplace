@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        if (file_exists(app_path('Providers/ViewServiceProvider.php'))) {
+            require_once app_path('Providers/ViewServiceProvider.php');
+        }
     }
 }

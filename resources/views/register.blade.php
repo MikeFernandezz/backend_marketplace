@@ -64,8 +64,5 @@
     </div>
   </div>
 
-  <script>
-    // Eliminar el manejo de localStorage y validación JS, dejar validación en backend
-  </script>
 </body>
 </html>
