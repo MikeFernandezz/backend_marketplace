@@ -46,7 +46,7 @@
             </div>
             <button type="submit" class="btn btn-success btn-block">Registrarse</button>
             <p class="text-center mt-3">
-              ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
+              ¿Ya tienes cuenta? <a href="{{ route('login') }}">Inicia sesión</a>
             </p>
           </form>
         </div>
