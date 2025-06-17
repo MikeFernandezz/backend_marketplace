@@ -13,6 +13,12 @@
         <div class="container">
             <a class="navbar-brand" href="/">Coursemarket</a>
         </div>
+        <div class="d-flex align-items-center ms-auto">
+            <a href="{{ route('login') }}" class="text-white text-decoration-none me-3">
+                <img src="{{ asset('D:\backend_marketplace\resources\img\webres\acceso.png') }}" alt="Login" width="32" height="32" class="rounded-circle">
+            </a>
+        </div>
+    </div>
     </nav>
     <main style="margin-top: 2rem;">
         @yield('content')
