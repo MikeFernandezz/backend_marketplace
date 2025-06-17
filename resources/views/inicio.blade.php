@@ -65,7 +65,7 @@
         <div class="row text-start">
             <div class="col-12 text-center mb-4">
                 <a href="{{ url('/') }}" class="d-inline-block mb-3">
-                    <img src="{{ asset('img/logo-coursemarket.png') }}" alt="CourseMarket" style="height:40px;">
+                    <img src="{{ asset('img/webres/logo.png') }}" alt="CourseMarket" style="height:200px;">
                 </a>
             </div>
             <div class="col-6 col-md-3 mb-4">
