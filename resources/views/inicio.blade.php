@@ -5,7 +5,7 @@
 
     <!-- Banner principal -->
     <div class="jumbotron text-white bg-primary rounded shadow p-5 mb-5 text-center">
-        <h1 class="display-4 font-weight-bold">Bienvenido a Coursemaket</h1>
+        <h1 class="display-4 font-weight-bold">Bienvenido a CourseMarket</h1>
         <p class="lead">Desbloquea tu potencial con la tecnologia educativa</p>
         <a href="#productos" class="btn btn-light btn-lg mt-3">Ver productos</a>
     </div>

@@ -57,8 +57,6 @@ Route::get('/', function () {
     return view('inicio', compact('productos'));
 });
 
-Route::get('/bootstrap-test', function () { return view('bootstrap_test'); });
-
 Route::get('/login', function () {
     return view('login');
 })->name('login');
