@@ -30,6 +30,10 @@
                 @endforeach
             </select>
         </div>
+        <div class="form-group mb-3">
+            <label for="image">Imagen del producto</label>
+            <input type="file" id="image" name="image" class="form-control">
+        </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
         <a href="{{ route('admin.productos.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>

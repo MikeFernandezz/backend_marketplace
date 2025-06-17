@@ -31,6 +31,13 @@
                 @endforeach
             </select>
         </div>
+        <div class="form-group mb-3">
+            <label for="image">Imagen del producto</label>
+            <input type="file" id="image" name="image" class="form-control">
+            @if($producto->image_path)
+                <img src="{{ asset('img/productos/' . $producto->image_path) }}" alt="Imagen actual" class="img-thumbnail mt-2" style="max-width: 150px;">
+            @endif
+        </div>
         <button type="submit" class="btn btn-primary">Actualizar</button>
         <a href="{{ route('admin.productos.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>

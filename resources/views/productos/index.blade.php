@@ -18,6 +18,7 @@
                 <th>Precio</th>
                 <th>Archivo</th>
                 <th>Categoría</th>
+                <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -30,6 +31,13 @@
                     <td>{{ $producto->precio }}</td>
                     <td><a href="{{ asset('storage/' . $producto->archivo) }}" target="_blank">Ver archivo</a></td>
                     <td>{{ $producto->categoria->nombre_categoria ?? '' }}</td>
+                    <td>
+                        @if($producto->image_path)
+                            <img src="{{ asset('img/productos/' . $producto->image_path) }}" alt="Imagen" style="max-width: 80px;">
+                        @else
+                            <span class="text-muted">Sin imagen</span>
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('admin.productos.show', $producto->id) }}" class="btn btn-info btn-sm">Ver</a>
                         <a href="{{ route('admin.productos.edit', $producto->id) }}" class="btn btn-warning btn-sm">Editar</a>

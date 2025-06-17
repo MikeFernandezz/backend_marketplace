@@ -23,7 +23,16 @@ class ProductoController extends Controller
             'precio' => 'required|numeric',
             'archivo' => 'nullable|string',
             'id_categoria' => 'required|exists:categorias,id_categoria',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img/productos'), $imageName);
+            $validated['image_path'] = $imageName;
+        }
+
         $producto = Producto::create($validated);
         return redirect()->route('admin.productos.index')->with('success', 'Producto creado correctamente');
     }
@@ -46,7 +55,16 @@ class ProductoController extends Controller
             'precio' => 'sometimes|required|numeric',
             'archivo' => 'nullable|string',
             'id_categoria' => 'sometimes|required|exists:categorias,id_categoria',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img/productos'), $imageName);
+            $validated['image_path'] = $imageName;
+        }
+
         $producto->update($validated);
         return redirect()->route('admin.productos.show', $producto->id)->with('success', 'Producto actualizado correctamente');
     }
