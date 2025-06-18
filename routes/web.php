@@ -62,6 +62,11 @@ Route::get('/', function () {
     return view('inicio', compact('productos'));
 });
 
+Route::get('/producto/{id}', function ($id) {
+    $producto = Producto::with('categoria')->findOrFail($id);
+    return view('producto_detalle', compact('producto'));
+})->name('producto.detalle');
+
 Route::get('/login', function () {
     return view('login');
 })->name('login');
@@ -72,5 +77,6 @@ Route::get('/register', function () {
 
 Route::post('/register', [UsuarioController::class, 'store'])->name('register.submit');
 Route::post('/login', [UsuarioController::class, 'login'])->name('login.submit');
+Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout');
 
 require __DIR__.'/categoria.php';

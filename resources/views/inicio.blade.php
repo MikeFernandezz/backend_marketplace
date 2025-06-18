@@ -14,13 +14,37 @@
     <div id="cursosCarrusel" class="carousel slide mb-5" data-bs-ride="carousel">
         <div class="carousel-inner rounded shadow" style="text-align: center;">
             <div class="carousel-item active">
-                <img src="img/productos/curso_html_css.jpg" class="d-block w-50" alt="Novedades 1">
+                <div class="row align-items-center justify-content-center" style="min-height: 220px; padding: 32px 0;">
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <img src="img/productos/curso_html_css.jpg" class="img-thumbnail" style="width: 260px; height: 120px; object-fit: cover;" alt="Novedades 1">
+                    </div>
+                    <div class="col-8 text-start">
+                        <h5>Curso de HTML y CSS</h5>
+                        <p>Aprende a crear páginas web modernas desde cero con HTML5 y CSS3. Ideal para principiantes.</p>
+                    </div>
+                </div>
             </div>
             <div class="carousel-item">
-                <img src="img/productos/curso_java.jpg" class="d-block w-50" alt="Novedades 2">
+                <div class="row align-items-center justify-content-center" style="min-height: 220px; padding: 32px 0;">
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <img src="img/productos/curso_java.jpg" class="img-thumbnail" style="width: 260px; height: 120px; object-fit: cover;" alt="Novedades 2">
+                    </div>
+                    <div class="col-8 text-start">
+                        <h5>Curso de Java</h5>
+                        <p>Domina la programación orientada a objetos y desarrolla aplicaciones robustas con Java.</p>
+                    </div>
+                </div>
             </div>
             <div class="carousel-item">
-                <img src="img/productos/curso_python.jpg" class="d-block w-50" alt="Novedades 3">
+                <div class="row align-items-center justify-content-center" style="min-height: 220px; padding: 32px 0;">
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <img src="img/productos/curso_python.jpg" class="img-thumbnail" style="width: 260px; height: 120px; object-fit: cover;" alt="Novedades 3">
+                    </div>
+                    <div class="col-8 text-start">
+                        <h5>Curso de Python</h5>
+                        <p>Iníciate en el mundo de la programación con Python, uno de los lenguajes más versátiles y populares.</p>
+                    </div>
+                </div>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#cursosCarrusel" data-bs-slide="prev">
@@ -40,17 +64,21 @@
                 @foreach($fila as $producto)
                     <div class="col-md-4 mb-4">
                         <div class="card h-100 shadow-sm">
-                            <img src="{{ $producto->image_path ? asset('img/productos/' . $producto->image_path) : 'https://via.placeholder.com/400x250' }}" class="card-img-top" alt="{{ $producto->nombre }}">
+                            <a href="{{ route('producto.detalle', $producto->id) }}" class="text-decoration-none">
+                                <img src="{{ $producto->image_path ? asset('img/productos/' . $producto->image_path) : 'https://via.placeholder.com/400x250' }}" class="card-img-top" alt="{{ $producto->nombre }}" style="cursor: pointer; height: 200px; object-fit: cover;">
+                            </a>
                             <div class="card-body">
-                                <h5 class="card-title">{{ $producto->nombre }}</h5>
-                                <p class="card-text">{{ $producto->descripcion }}</p>
+                                <a href="{{ route('producto.detalle', $producto->id) }}" class="text-decoration-none text-dark">
+                                    <h5 class="card-title">{{ $producto->nombre }}</h5>
+                                </a>
+                                <p class="card-text">{{ Str::limit($producto->descripcion, 100) }}</p>
                                 <span class="badge bg-success">${{ $producto->precio }}</span>
                                 @if($producto->categoria)
                                     <span class="badge bg-secondary ms-2">{{ $producto->categoria->nombre_categoria ?? $producto->categoria->nombre }}</span>
                                 @endif
                             </div>
                             <div class="card-footer bg-transparent border-0">
-                                <a href="#" class="btn btn-primary w-100">Comprar</a>
+                                <a href="{{ route('producto.detalle', $producto->id) }}" class="btn btn-primary w-100">Ver Detalles</a>
                             </div>
                         </div>
                     </div>

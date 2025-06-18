@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coursemarket</title>
-    <!-- Bootstrap CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -35,7 +35,25 @@
                 <div class="col-auto ms-auto">
                     @if(session('usuario_auth'))
                         <?php $usuario = \App\Models\Usuario::find(session('usuario_auth')); ?>
-                        <span class="text-white me-3">Hola, {{ $usuario ? $usuario->nombre : 'Usuario' }}</span>
+                        <!-- Menú desplegable de usuario autenticado -->
+                        <div class="dropdown" onmouseover="document.getElementById('dropdownUsuario').classList.add('show');document.getElementById('usuarioMenu').classList.add('show');" onmouseleave="document.getElementById('dropdownUsuario').classList.remove('show');document.getElementById('usuarioMenu').classList.remove('show');">
+                            <button class="btn dropdown-toggle d-flex align-items-center border-0 bg-transparent shadow-none text-white" type="button" id="dropdownUsuario" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0.5rem 0.75rem;">
+                                <span class="me-2">Hola, {{ $usuario ? $usuario->nombre : 'Usuario' }}</span>
+                                <img src="{{ asset('img/webres/acceso.png') }}" alt="Usuario" width="24" height="24" class="rounded-circle">
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" id="usuarioMenu" aria-labelledby="dropdownUsuario">
+                                <li><a class="dropdown-item" href="#" onclick="alert('Función de Mis Compras próximamente')">Ver Mis Compras</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item" style="border: none; background: none; width: 100%; text-align: left;">
+                                            Cerrar Sesión
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
                     @else
                         <a href="{{ route('login') }}" class="text-white text-decoration-none me-3">
                             <img src="{{ asset('img/webres/acceso.png') }}" alt="Login" width="32" height="32" class="rounded-circle">
@@ -48,16 +66,5 @@
     <main style="margin-top: 2rem;">
         @yield('content')
     </main>
-    <!-- Bootstrap JS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        .dropdown:hover .dropdown-menu {
-            display: block;
-            margin-top: 0;
-        }
-        .dropdown-menu {
-            transition: none;
-        }
-    </style>
 </body>
 </html>

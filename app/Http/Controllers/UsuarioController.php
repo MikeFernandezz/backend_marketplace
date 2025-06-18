@@ -64,8 +64,13 @@ class UsuarioController extends Controller
         if ($usuario && Hash::check($request->contrasena, $usuario->contrasena)) {
             $request->session()->put('usuario_auth', $usuario->id_usuario);
             return redirect('/')->with('success', 'Bienvenido, ' . $usuario->nombre . '!');
-        }
-        return back()->withErrors(['contrasena' => 'Correo o contraseña incorrectos.'])->withInput();
+        }        return back()->withErrors(['contrasena' => 'Correo o contraseña incorrectos.'])->withInput();
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->forget('usuario_auth');
+        return redirect('/')->with('success', 'Sesión cerrada exitosamente.');
     }
 
     public function update(Request $request, $id)

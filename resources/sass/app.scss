@@ -6,3 +6,76 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+/* Estilos personalizados para el navbar y menús desplegables */
+
+/* Comportamiento de dropdown al hacer hover */
+.dropdown:hover .dropdown-menu {
+    display: block !important;
+    margin-top: 0;
+}
+
+.dropdown-menu {
+    transition: none !important;
+}
+
+/* Estilos para el menú de categorías con mayor especificidad */
+.navbar .dropdown-menu#categoriasMenu .dropdown-item {
+    padding: 0.5rem 1rem !important;
+    color: #333 !important;
+    transition: all 0.2s ease !important;
+}
+
+.navbar .dropdown-menu#categoriasMenu .dropdown-item:hover,
+.navbar .dropdown-menu#categoriasMenu .dropdown-item:focus,
+.navbar .dropdown-menu#categoriasMenu .dropdown-item:active {
+    background-color: #0d6efd !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* Estilos específicos para el menú de usuario con mayor especificidad */
+.navbar .dropdown-menu#usuarioMenu {
+    min-width: 180px !important;
+}
+
+.navbar .dropdown-menu#usuarioMenu .dropdown-item {
+    padding: 0.5rem 1rem !important;
+    color: #333 !important;
+    transition: all 0.2s ease !important;
+}
+
+.navbar .dropdown-menu#usuarioMenu .dropdown-item:hover,
+.navbar .dropdown-menu#usuarioMenu .dropdown-item:focus,
+.navbar .dropdown-menu#usuarioMenu .dropdown-item:active {
+    background-color: #0d6efd !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* Estilo específico para el botón de cerrar sesión con máxima especificidad */
+.navbar .dropdown-menu#usuarioMenu form button.dropdown-item:hover,
+.navbar .dropdown-menu#usuarioMenu form button.dropdown-item:focus,
+.navbar .dropdown-menu#usuarioMenu form button.dropdown-item:active {
+    background-color: #dc3545 !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* Mantener coherencia visual con los botones desplegables */
+.navbar #dropdownUsuario, 
+.navbar #dropdownCategorias {
+    color: white !important;
+}
+
+.navbar #dropdownUsuario:hover, 
+.navbar #dropdownCategorias:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Sobrescribir estilos específicos de Bootstrap */
+.dropdown-item:hover, 
+.dropdown-item:focus {
+    background-color: inherit !important;
+    color: inherit !important;
+}
