@@ -11,7 +11,7 @@
 <body>
   <div class="text-center mb-4">
     <a href="{{ url('/') }}" class="d-inline-block">
-      <img src="{{ asset('img/webres/logo.png') }}" alt="CourseMarket" style="height:120px;" />
+      <img src="{{ asset('img/webres/logo_alt.png') }}" alt="CourseMarket" style="height:160px;" />
     </a>
   </div>
 

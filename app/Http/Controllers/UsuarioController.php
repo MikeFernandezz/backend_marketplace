@@ -91,15 +91,26 @@ class UsuarioController extends Controller
     {
         Usuario::destroy($id);
         return response()->json(null, 204);
-    }
-
-    public function adminIndex(Request $request)
+    }    public function adminIndex(Request $request)
     {
         $query = Usuario::query();
+        
+        // Filtro por rol
         if ($request->filled('rol')) {
             $query->where('rol', $request->rol);
         }
-        $usuarios = $query->get();
+        
+        // Filtro por búsqueda (nombre, apellidos o correo)
+        if ($request->filled('buscar')) {
+            $buscar = $request->buscar;
+            $query->where(function($q) use ($buscar) {
+                $q->where('nombre', 'LIKE', '%' . $buscar . '%')
+                  ->orWhere('apellidos', 'LIKE', '%' . $buscar . '%')
+                  ->orWhere('correo', 'LIKE', '%' . $buscar . '%');
+            });
+        }
+        
+        $usuarios = $query->orderBy('nombre')->get();
         return view('admin_usuarios', compact('usuarios'));
     }
 
@@ -109,6 +120,90 @@ class UsuarioController extends Controller
         $usuario->rol = 'admin';
         $usuario->save();
         return redirect()->route('admin.usuarios.index')->with('success', 'Permiso de administrador otorgado.');
+    }
+      public function removeAdmin($id)
+    {
+        $usuario = Usuario::findOrFail($id);
+        
+        // Verificar que no sea el último administrador
+        $adminCount = Usuario::where('rol', 'admin')->count();
+        if ($adminCount <= 1) {
+            return redirect()->route('admin.usuarios.index')
+                           ->with('error', 'No se puede remover el último administrador del sistema.');
+        }
+        
+        // Verificar que no se esté intentando remover a sí mismo (opcional)
+        $currentAdminId = session('admin_auth');
+        if ($currentAdminId == $id) {
+            return redirect()->route('admin.usuarios.index')
+                           ->with('error', 'No puedes remover tus propios permisos de administrador.');
+        }
+        
+        $usuario->rol = 'cliente';
+        $usuario->save();
+        
+        return redirect()->route('admin.usuarios.index')
+                       ->with('success', 'Permisos de administrador removidos correctamente.');
+    }
+
+    public function exportCsv(Request $request)
+    {
+        $query = Usuario::query();
+        
+        // Aplicar los mismos filtros que en adminIndex
+        if ($request->filled('rol')) {
+            $query->where('rol', $request->rol);
+        }
+        
+        if ($request->filled('buscar')) {
+            $buscar = $request->buscar;
+            $query->where(function($q) use ($buscar) {
+                $q->where('nombre', 'LIKE', '%' . $buscar . '%')
+                  ->orWhere('apellidos', 'LIKE', '%' . $buscar . '%')
+                  ->orWhere('correo', 'LIKE', '%' . $buscar . '%');
+            });
+        }
+        
+        $usuarios = $query->orderBy('nombre')->get();
+        
+        $filename = 'usuarios_' . date('Y-m-d_H-i-s') . '.csv';
+        
+        $headers = [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+        ];
+        
+        $callback = function() use ($usuarios) {
+            $file = fopen('php://output', 'w');
+            
+            // Agregar BOM para UTF-8
+            fwrite($file, "\xEF\xBB\xBF");
+            
+            // Encabezados
+            fputcsv($file, [
+                'ID Usuario',
+                'Nombre',
+                'Apellidos',
+                'Nombre Completo',
+                'Correo Electrónico',
+                'Rol'
+            ]);
+            
+            foreach ($usuarios as $usuario) {
+                fputcsv($file, [
+                    $usuario->id_usuario,
+                    $usuario->nombre,
+                    $usuario->apellidos,
+                    $usuario->nombre . ' ' . $usuario->apellidos,
+                    $usuario->correo,
+                    ucfirst($usuario->rol)
+                ]);
+            }
+            
+            fclose($file);
+        };
+        
+        return response()->stream($callback, 200, $headers);
     }
 
     public function adminDestroy($id)

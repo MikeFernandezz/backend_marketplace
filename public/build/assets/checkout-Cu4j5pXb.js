@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(){const e=document.querySelector("form"),o=document.querySelectorAll('input[name="metodo_pago"]');e&&o.length>0&&e.addEventListener("submit",function(n){let t=!1;o.forEach(c=>{c.checked&&(t=!0)}),t||(n.preventDefault(),alert("Por favor selecciona un método de pago"))})});

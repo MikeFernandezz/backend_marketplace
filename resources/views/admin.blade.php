@@ -8,25 +8,29 @@
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('admin.productos.index') }}">
+                        <a class="nav-link {{ request()->routeIs('admin.productos.*') ? 'active' : '' }}" 
+                           href="{{ route('admin.productos.index') }}">
                             <span data-feather="box"></span>
                             Productos
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.categorias.index') }}">
+                        <a class="nav-link {{ request()->routeIs('admin.categorias.*') ? 'active' : '' }}" 
+                           href="{{ route('admin.categorias.index') }}">
                             <span data-feather="layers"></span>
                             Categorías
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/ventas') }}">
+                        <a class="nav-link {{ request()->routeIs('admin.ventas.*') ? 'active' : '' }}" 
+                           href="{{ route('admin.ventas.index') }}">
                             <span data-feather="bar-chart-2"></span>
                             Ventas
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.usuarios.index') }}">
+                        <a class="nav-link {{ request()->routeIs('admin.usuarios.*') ? 'active' : '' }}" 
+                           href="{{ route('admin.usuarios.index') }}">
                             <span data-feather="users"></span>
                             Usuarios
                         </a>
@@ -64,7 +68,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ventas</h5>
                             <p class="card-text">Consulta el historial de ventas.</p>
-                            <a href="{{ url('/ventas') }}" class="btn btn-primary">Ver Ventas</a>
+                            <a href="{{ route('admin.ventas.index') }}" class="btn btn-primary">Ver Ventas</a>
                         </div>
                     </div>
                 </div>

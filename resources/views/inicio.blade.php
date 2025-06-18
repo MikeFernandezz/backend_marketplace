@@ -81,7 +81,18 @@
                                 @endif
                             </div>
                             <div class="card-footer bg-transparent border-0">
-                                <a href="{{ route('producto.detalle', $producto->id) }}" class="btn btn-primary w-100">Ver Detalles</a>
+                                <div class="d-grid gap-2">
+                                    <a href="{{ route('producto.detalle', $producto->id) }}" class="btn btn-primary">Ver Detalles</a>
+                                    @if(session('usuario_auth'))
+                                        <button type="button" class="btn btn-outline-success" onclick="agregarAlCarrito({{ $producto->id }})">
+                                            <i class="bi bi-cart-plus me-2"></i>Agregar al Carrito
+                                        </button>
+                                    @else
+                                        <a href="{{ route('login') }}" class="btn btn-outline-success">
+                                            <i class="bi bi-cart-plus me-2"></i>Agregar al Carrito
+                                        </a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>

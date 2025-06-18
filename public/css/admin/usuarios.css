@@ -1,0 +1,48 @@
+/**
+ * Estilos para la gestión de usuarios del panel administrativo
+ */
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.badge {
+    font-size: 0.8em;
+}
+
+.btn-group .btn {
+    margin-right: 0.25rem;
+}
+
+.btn-group .btn:last-child {
+    margin-right: 0;
+}
+
+/* Columna de eliminación en el extremo derecho */
+.table th:last-child,
+.table td:last-child {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Mejorar el espaciado de botones */
+.table .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Destacar la columna de eliminación */
+.table td:last-child {
+    background-color: rgba(220, 53, 69, 0.05);
+    border-left: 2px solid rgba(220, 53, 69, 0.1);
+}

@@ -1,0 +1,51 @@
+/**
+ * Estilos para la sección de mis compras
+ */
+
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.btn {
+    border-radius: 8px;
+}
+
+.badge {
+    font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+    .card-header .row > div {
+        text-align: center !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .card-header .row > div:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media print {
+    .btn, .no-print {
+        display: none !important;
+    }
+    
+    .card {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+}

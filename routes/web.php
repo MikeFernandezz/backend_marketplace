@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\VentaController;
+use App\Http\Controllers\CarritoController;
 use App\Models\Producto;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -49,8 +51,15 @@ Route::middleware([App\Http\AdminAuthMiddleware::class])->group(function () {
         ]);
         // Gestión de usuarios
         Route::get('usuarios', [UsuarioController::class, 'adminIndex'])->name('admin.usuarios.index');
+        Route::get('usuarios-export/csv', [UsuarioController::class, 'exportCsv'])->name('admin.usuarios.export.csv');
         Route::patch('usuarios/{id}/make-admin', [UsuarioController::class, 'makeAdmin'])->name('admin.usuarios.makeAdmin');
+        Route::patch('usuarios/{id}/remove-admin', [UsuarioController::class, 'removeAdmin'])->name('admin.usuarios.removeAdmin');
         Route::delete('usuarios/{id}', [UsuarioController::class, 'adminDestroy'])->name('admin.usuarios.destroy');
+        
+        // Gestión de ventas
+        Route::get('ventas', [VentaController::class, 'adminIndex'])->name('admin.ventas.index');
+        Route::get('ventas/{id}', [VentaController::class, 'adminShow'])->name('admin.ventas.show');
+        Route::get('ventas-export/csv', [VentaController::class, 'exportCsv'])->name('admin.ventas.export.csv');
     });
     Route::get('/admin', function () {
         return view('admin');
@@ -79,4 +88,36 @@ Route::post('/register', [UsuarioController::class, 'store'])->name('register.su
 Route::post('/login', [UsuarioController::class, 'login'])->name('login.submit');
 Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout');
 
+// Rutas del Carrito de Compras
+Route::prefix('carrito')->group(function () {
+    Route::post('/agregar', [CarritoController::class, 'agregarProducto'])->name('carrito.agregar');
+    Route::get('/obtener', [CarritoController::class, 'obtenerCarrito'])->name('carrito.obtener');
+    // Route::put('/actualizar', [CarritoController::class, 'actualizarCantidad'])->name('carrito.actualizar'); // Deshabilitado para cursos digitales
+    Route::delete('/eliminar/{producto_id}', [CarritoController::class, 'eliminarProducto'])->name('carrito.eliminar');
+    Route::delete('/vaciar', [CarritoController::class, 'vaciarCarrito'])->name('carrito.vaciar');
+});
+
+// Rutas de Checkout y Compra
+Route::get('/checkout', [CarritoController::class, 'mostrarCheckout'])->name('checkout');
+Route::post('/checkout/procesar', [CarritoController::class, 'procesarCompra'])->name('checkout.procesar');
+Route::get('/compra/{venta_id}/detalle', [CarritoController::class, 'mostrarDetalleCompra'])->name('compra.detalle');
+
+// Ruta para ver las compras del usuario
+Route::get('/mis-compras', [CarritoController::class, 'misCompras'])->name('usuario.compras');
+
 require __DIR__.'/categoria.php';
+
+// API Routes para Ventas
+Route::prefix('api')->group(function () {
+    // CRUD básico de ventas
+    Route::get('ventas', [VentaController::class, 'index']);
+    Route::get('ventas/{id}', [VentaController::class, 'show']);
+    Route::post('ventas', [VentaController::class, 'store']);
+    Route::put('ventas/{id}', [VentaController::class, 'update']);
+    Route::delete('ventas/{id}', [VentaController::class, 'destroy']);
+    
+    // Rutas adicionales para manejo de productos en ventas
+    Route::get('ventas/{id}/productos', [VentaController::class, 'getProductos']);
+    Route::post('ventas/{id}/productos', [VentaController::class, 'addProducto']);
+    Route::delete('ventas/{ventaId}/productos/{productoId}', [VentaController::class, 'removeProducto']);
+});

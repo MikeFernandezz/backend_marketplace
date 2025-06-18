@@ -1,12 +1,65 @@
 {
+  "resources/css/admin/usuarios.css": {
+    "file": "assets/usuarios-MYpJ5STr.css",
+    "src": "resources/css/admin/usuarios.css",
+    "isEntry": true
+  },
+  "resources/css/checkout.css": {
+    "file": "assets/checkout-CJW7rKbD.css",
+    "src": "resources/css/checkout.css",
+    "isEntry": true
+  },
+  "resources/css/detalle-compra.css": {
+    "file": "assets/detalle-compra-S60iOvfY.css",
+    "src": "resources/css/detalle-compra.css",
+    "isEntry": true
+  },
+  "resources/css/mis-compras.css": {
+    "file": "assets/mis-compras-CmcfZKmY.css",
+    "src": "resources/css/mis-compras.css",
+    "isEntry": true
+  },
+  "resources/css/producto-detalle.css": {
+    "file": "assets/producto-detalle-DVLFnPH8.css",
+    "src": "resources/css/producto-detalle.css",
+    "isEntry": true
+  },
+  "resources/css/ventas/venta-detalle.css": {
+    "file": "assets/venta-detalle-D0U5V3pa.css",
+    "src": "resources/css/ventas/venta-detalle.css",
+    "isEntry": true
+  },
+  "resources/css/ventas/ventas-shared.css": {
+    "file": "assets/ventas-shared-BpGKUW2j.css",
+    "src": "resources/css/ventas/ventas-shared.css",
+    "isEntry": true
+  },
   "resources/js/app.js": {
     "file": "assets/app-pd4cR8cG.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
   },
+  "resources/js/checkout.js": {
+    "file": "assets/checkout-Cu4j5pXb.js",
+    "name": "checkout",
+    "src": "resources/js/checkout.js",
+    "isEntry": true
+  },
+  "resources/js/detalle-compra.js": {
+    "file": "assets/detalle-compra-HptlrpLT.js",
+    "name": "detalle-compra",
+    "src": "resources/js/detalle-compra.js",
+    "isEntry": true
+  },
+  "resources/js/producto-detalle.js": {
+    "file": "assets/producto-detalle-l0sNRNKZ.js",
+    "name": "producto-detalle",
+    "src": "resources/js/producto-detalle.js",
+    "isEntry": true
+  },
   "resources/sass/app.scss": {
-    "file": "assets/app-Z0Qwcq82.css",
+    "file": "assets/app-PJTFaL_L.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
   }

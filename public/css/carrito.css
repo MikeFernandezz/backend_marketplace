@@ -1,0 +1,249 @@
+/* Estilos adicionales para el carrito de compras */
+
+/* Animaciones para el carrito */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0%, 20%, 60%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    80% { transform: translateY(-5px); }
+}
+
+/* Dropdown del carrito */
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Carrito dropdown específico */
+.carrito-dropdown {
+    width: 350px;
+    max-height: 400px;
+    overflow-y: auto;
+    /* Asegurar que no se salga de los límites */
+    max-width: calc(100vw - 40px);
+    position: absolute;
+    right: 0;
+    left: auto;
+}
+
+/* Ajustar posición en pantallas pequeñas */
+@media (max-width: 576px) {
+    .carrito-dropdown {
+        width: 300px !important;
+        max-width: calc(100vw - 20px) !important;
+        right: -10px !important;
+        left: auto !important;
+        transform: translateX(0) !important;
+    }
+    
+    /* Ajustar el contenedor padre en móviles */
+    .navbar .dropdown {
+        position: static;
+    }
+    
+    .navbar .dropdown .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 10px;
+        left: auto;
+    }
+}
+
+@media (max-width: 380px) {
+    .carrito-dropdown {
+        width: 280px !important;
+        max-width: calc(100vw - 15px) !important;
+        right: -5px !important;
+    }
+}
+
+/* Items del carrito */
+.carrito-item {
+    transition: background-color 0.2s ease;
+}
+
+.carrito-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Badge del contador */
+#carrito-contador {
+    animation: bounce 0.6s ease when updated;
+}
+
+/* Toast notifications */
+.alert.position-fixed {
+    z-index: 1055;
+    animation: fadeIn 0.3s ease;
+    /* Asegurar que los toasts no se salgan en móviles */
+    max-width: calc(100vw - 20px);
+    right: 10px !important;
+    left: auto;
+}
+
+/* Botones del carrito */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Responsive design para el carrito */
+@media (max-width: 576px) {
+    .carrito-item img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .carrito-item h6 {
+        font-size: 0.9rem;
+    }
+    
+    .carrito-item .btn {
+        padding: 0.15rem 0.3rem;
+        font-size: 0.75rem;
+    }
+    
+    /* Ajustar padding en móviles */
+    .carrito-dropdown .p-3 {
+        padding: 1rem !important;
+    }
+    
+    /* Hacer el texto más pequeño en móviles */
+    .carrito-dropdown h6 {
+        font-size: 1rem;
+    }
+    
+    .carrito-dropdown .small {
+        font-size: 0.75rem !important;
+    }
+}
+
+/* Navbar responsivo para el carrito */
+.navbar .flex-nowrap {
+    flex-wrap: nowrap !important;
+}
+
+.navbar .position-relative {
+    position: relative !important;
+}
+
+/* Prevenir overflow horizontal */
+body {
+    overflow-x: hidden;
+}
+
+.navbar {
+    overflow: visible;
+}
+
+/* Mejorar el comportamiento del dropdown en móviles */
+.dropdown-menu.show {
+    display: block;
+}
+
+/* Asegurar que el carrito esté bien posicionado */
+.carrito-dropdown {
+    z-index: 1050;
+    position: absolute !important;
+}
+
+/* Estilos específicos para pantallas muy pequeñas */
+@media (max-width: 360px) {
+    .carrito-dropdown {
+        width: 260px !important;
+        max-width: calc(100vw - 10px) !important;
+        right: 0px !important;
+        font-size: 0.85rem;
+    }
+    
+    .carrito-dropdown .p-3 {
+        padding: 0.75rem !important;
+    }
+    
+    .carrito-item {
+        padding: 0.5rem !important;
+    }
+    
+    .carrito-item img {
+        width: 35px !important;
+        height: 35px !important;
+    }
+    
+    .carrito-dropdown h6 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem !important;
+    }
+}
+
+/* Mejoras para el toast en móviles */
+@media (max-width: 480px) {
+    .alert.position-fixed {
+        right: 5px !important;
+        left: 5px !important;
+        max-width: none !important;
+        width: auto !important;
+        font-size: 0.9rem;
+    }
+}
+
+/* Estilos para checkout */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Estilos para productos */
+.product-card {
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Loading states */
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Success states */
+.btn-success {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+/* Estilos para el detalle de compra */
+.receipt-container {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .card {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+    }
+    
+    .btn {
+        display: none !important;
+    }
+}

@@ -1,0 +1,22 @@
+body {
+    background-color: #FEFEFE;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(91, 127, 214, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(72, 201, 176, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(243, 156, 18, 0.02) 0%, transparent 50%);
+    min-height: 100vh;
+}
+
+.carousel-inner img {
+    object-fit: cover;
+    height: 400px;
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.btn-outline-success:hover {
+    background-color: #198754;
+    color: #fff;
+}
