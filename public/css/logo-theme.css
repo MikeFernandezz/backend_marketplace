@@ -1,0 +1,194 @@
+/* Logo-based color palette for CourseMarket - Light Theme */
+:root {
+    /* Primary colors based on logo - Lighter variants */
+    --logo-primary: #5B7FD6;      /* Lighter blue from logo */
+    --logo-secondary: #F39C12;     /* Softer orange accent */
+    --logo-accent: #48C9B0;        /* Lighter teal complement */
+    --logo-dark: #5D6D7E;          /* Lighter blue-grey */
+    --logo-light: #F8F9FA;         /* Very light grey */
+    
+    /* Complementary palette - Softer tones */
+    --logo-success: #58D68D;       /* Lighter green success */
+    --logo-warning: #F7DC6F;       /* Softer orange warning */
+    --logo-info: #85C1E9;          /* Soft blue info */
+    --logo-danger: #F1948A;        /* Softer red danger */
+    
+    /* Neutral tones - Lighter */
+    --logo-white: #FFFFFF;
+    --logo-grey-light: #E5E8E8;
+    --logo-grey: #D5DBDB;
+    --logo-grey-dark: #AEB6BF;
+}
+
+/* Override Bootstrap primary colors */
+.bg-primary {
+    background-color: var(--logo-primary) !important;
+}
+
+.btn-primary {
+    background-color: var(--logo-primary);
+    border-color: var(--logo-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--logo-dark);
+    border-color: var(--logo-dark);
+}
+
+.text-primary {
+    color: var(--logo-primary) !important;
+}
+
+/* Navbar styling with logo colors */
+.navbar-dark.bg-primary {
+    background-color: var(--logo-primary) !important;
+}
+
+/* Jumbotron with logo colors - Softer gradient */
+.jumbotron.bg-primary {
+    background: linear-gradient(135deg, var(--logo-primary) 0%, var(--logo-accent) 100%) !important;
+    color: #FFFFFF !important;
+}
+
+/* Cards with logo accent - Softer shadows */
+.card {
+    border: 1px solid var(--logo-grey-light);
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.card:hover {
+    border-color: var(--logo-secondary);
+    box-shadow: 0 6px 20px rgba(91, 127, 214, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Badges with logo colors */
+.badge.bg-success {
+    background-color: var(--logo-success) !important;
+}
+
+.badge.bg-secondary {
+    background-color: var(--logo-accent) !important;
+}
+
+/* Button styling - Softer colors */
+.btn-light {
+    background-color: var(--logo-white);
+    border-color: var(--logo-grey-light);
+    color: var(--logo-dark);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-light:hover {
+    background-color: var(--logo-secondary);
+    border-color: var(--logo-secondary);
+    color: var(--logo-white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);
+}
+
+/* Dropdown menu styling - Softer appearance */
+.dropdown-menu {
+    border: 1px solid var(--logo-grey-light);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.98);
+}
+
+.dropdown-item:hover {
+    background-color: var(--logo-primary) !important;
+    color: var(--logo-white) !important;
+}
+
+/* Footer styling - Softer dark */
+footer.bg-dark {
+    background: linear-gradient(135deg, var(--logo-dark) 0%, #34495E 100%) !important;
+}
+
+/* Logo styling */
+.logo-brand {
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.logo-footer {
+    height: 150px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+/* Header logo container */
+.navbar-brand-container {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand-img {
+    height: 35px;
+    width: auto;
+    margin-right: 8px;
+}
+
+/* Body background with subtle logo colors - Much lighter */
+body {
+    background-color: #FEFEFE;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(91, 127, 214, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(72, 201, 176, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(243, 156, 18, 0.02) 0%, transparent 50%);
+    min-height: 100vh;
+}
+
+/* Carousel controls with logo colors - Softer */
+.carousel-control-prev,
+.carousel-control-next {
+    color: var(--logo-primary);
+    opacity: 0.7;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    color: var(--logo-secondary);
+    opacity: 1;
+}
+
+/* Link colors - Softer */
+a {
+    color: var(--logo-primary);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--logo-secondary);
+}
+
+/* Form elements - Softer focus */
+.form-control:focus {
+    border-color: var(--logo-primary);
+    box-shadow: 0 0 0 0.2rem rgba(91, 127, 214, 0.25);
+}
+
+/* Alert styling - Much softer */
+.alert-info {
+    background-color: rgba(133, 193, 233, 0.1);
+    border-color: var(--logo-info);
+    color: var(--logo-dark);
+    border-left: 4px solid var(--logo-info);
+}
+
+/* Navbar enhancements for logo visibility */
+.navbar-dark.bg-primary {
+    background: linear-gradient(90deg, var(--logo-primary) 0%, var(--logo-accent) 100%) !important;
+    box-shadow: 0 2px 10px rgba(91, 127, 214, 0.2);
+}
+
+/* Logo specific enhancements */
+.navbar-brand-img, .logo-brand, .logo-footer {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand-img:hover, .logo-brand:hover {
+    transform: scale(1.05);
+}

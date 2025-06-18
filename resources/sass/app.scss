@@ -29,7 +29,7 @@
 .navbar .dropdown-menu#categoriasMenu .dropdown-item:hover,
 .navbar .dropdown-menu#categoriasMenu .dropdown-item:focus,
 .navbar .dropdown-menu#categoriasMenu .dropdown-item:active {
-    background-color: #0d6efd !important;
+    background-color: var(--logo-primary, #5B7FD6) !important;
     color: white !important;
     text-decoration: none !important;
 }
@@ -48,7 +48,7 @@
 .navbar .dropdown-menu#usuarioMenu .dropdown-item:hover,
 .navbar .dropdown-menu#usuarioMenu .dropdown-item:focus,
 .navbar .dropdown-menu#usuarioMenu .dropdown-item:active {
-    background-color: #0d6efd !important;
+    background-color: var(--logo-primary, #5B7FD6) !important;
     color: white !important;
     text-decoration: none !important;
 }
@@ -57,7 +57,7 @@
 .navbar .dropdown-menu#usuarioMenu form button.dropdown-item:hover,
 .navbar .dropdown-menu#usuarioMenu form button.dropdown-item:focus,
 .navbar .dropdown-menu#usuarioMenu form button.dropdown-item:active {
-    background-color: #dc3545 !important;
+    background-color: var(--logo-danger, #F1948A) !important;
     color: white !important;
     text-decoration: none !important;
 }

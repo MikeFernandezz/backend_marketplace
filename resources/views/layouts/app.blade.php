@@ -6,6 +6,8 @@
     <title>Coursemarket</title>
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Logo Theme CSS -->
+    <link rel="stylesheet" href="{{ asset('css/logo-theme.css') }}">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
@@ -30,7 +32,10 @@
                     </div>
                 </div>
                 <div class="col">
-                    <a class="navbar-brand ms-3" href="/">Coursemarket</a>
+                    <div class="navbar-brand-container">
+                        <img src="{{ asset('img/webres/logo_img.png') }}" alt="CourseMarket" class="navbar-brand-img">
+                        <a class="navbar-brand ms-2" href="/">Coursemarket</a>
+                    </div>
                 </div>
                 <div class="col-auto ms-auto">
                     @if(session('usuario_auth'))

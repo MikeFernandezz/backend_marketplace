@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marketplace - Login</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="{{ asset('css/logo-theme.css') }}" />
   <link rel="stylesheet" href="{{ asset('estilos.css') }}" />
 </head>
 <body>
-  <a href="{{ url('/') }}" class="d-inline-block mb-3">
-    <img src="{{ asset('img/webres/logo.png') }}" alt="CourseMarket" class="logo-superior-derecha" style="height:150px;" />
-  </a>
+  <div class="text-center mb-4">
+    <a href="{{ url('/') }}" class="d-inline-block">
+      <img src="{{ asset('img/webres/logo.png') }}" alt="CourseMarket" style="height:120px;" />
+    </a>
+  </div>
 
   <div class="container py-5">
     <div class="row justify-content-center">

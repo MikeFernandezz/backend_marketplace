@@ -1,5 +1,19 @@
 // Body
-$body-bg: #f8fafc;
+$body-bg: #FEFEFE;
+
+// Logo-based color variables - Lighter variants
+$logo-primary: #5B7FD6;
+$logo-secondary: #F39C12;
+$logo-accent: #48C9B0;
+$logo-dark: #5D6D7E;
+
+// Bootstrap color overrides - Softer tones
+$primary: $logo-primary;
+$secondary: $logo-accent;
+$success: #58D68D;
+$info: #85C1E9;
+$warning: #F7DC6F;
+$danger: #F1948A;
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;

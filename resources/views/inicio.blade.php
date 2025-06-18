@@ -5,7 +5,10 @@
 
     <!-- Banner principal -->
     <div class="jumbotron text-white bg-primary rounded shadow p-5 mb-5 text-center">
-        <h1 class="display-4 font-weight-bold">Bienvenido a CourseMarket</h1>
+        <div class="d-flex justify-content-center align-items-center mb-3">
+            <img src="{{ asset('img/webres/logo_img.png') }}" alt="CourseMarket" style="height: 60px; margin-right: 15px;">
+            <h1 class="display-4 font-weight-bold mb-0">Bienvenido a CourseMarket</h1>
+        </div>
         <p class="lead">Desbloquea tu potencial con la tecnologia educativa</p>
         <a href="#productos" class="btn btn-light btn-lg mt-3">Ver productos</a>
     </div>
@@ -99,7 +102,7 @@
         <div class="row text-start">
             <div class="col-12 text-center mb-4">
                 <a href="{{ url('/') }}" class="d-inline-block mb-3">
-                    <img src="{{ asset('img/webres/logo.png') }}" alt="CourseMarket" style="height:200px;">
+                    <img src="{{ asset('img/webres/logo.png') }}" alt="CourseMarket" class="logo-footer">
                 </a>
             </div>
             <div class="col-6 col-md-3 mb-4">
