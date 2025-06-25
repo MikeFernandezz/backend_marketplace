@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div                            <div class="d-flex align-items-center py-3 border-bottom">                                <img src="{{ $ventaProducto->producto->image_path ? asset('img/productos/' . $ventaProducto->producto->image_path) : asset('img/webres/placeholder.jpg') }}" 
-                                     alt="{{ $ventaProducto->producto->nombre }}" 
-                                     class="me-3 rounded" 
-                                     style="width: 80px; height: 80px; object-fit: cover;" 
-                                     onerror="this.src='{{ asset('img/webres/placeholder.jpg') }}'">s="container my-5">
+<div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <!-- Mensaje de éxito -->
@@ -40,10 +36,9 @@
                                     }
                                 @endphp
                             </p>
-                        </div>
-                        <div class="col-md-6">
+                        </div>                        <div class="col-md-6">
                             <h6 class="text-muted">Cliente:</h6>
-                            <p class="mb-2">{{ $venta->usuario->nombre }}</p>
+                            <p class="mb-2">{{ $venta->usuario->nombre }} {{ $venta->usuario->apellidos }}</p>
                             
                             <h6 class="text-muted">Correo:</h6>
                             <p class="mb-2">{{ $venta->usuario->correo }}</p>
@@ -54,22 +49,44 @@
                     <div class="mb-4">
                         <h5 class="border-bottom pb-2">Productos Comprados</h5>
                         @foreach($venta->ventaProductos as $ventaProducto)
-                            <div class="d-flex align-items-center py-3 border-bottom">                                <img src="{{ $ventaProducto->producto->image_path ? asset('img/productos/' . $ventaProducto->producto->image_path) : asset('img/webres/placeholder.svg') }}" 
-                                     alt="{{ $ventaProducto->producto->nombre }}" 
-                                     class="rounded me-3" 
-                                     style="width: 80px; height: 80px; object-fit: cover;"
-                                     onerror="this.src='{{ asset('img/webres/placeholder.svg') }}'">
-                                <div class="flex-grow-1">
-                                    <h6 class="mb-1">{{ $ventaProducto->producto->nombre }}</h6>
-                                    <p class="text-muted small mb-1">{{ $ventaProducto->producto->descripcion }}</p>
-                                    <span class="badge bg-secondary">{{ $ventaProducto->producto->categoria->nombre_categoria ?? 'Sin categoría' }}</span>
-                                </div>                                <div class="text-end">
-                                    <div class="text-muted small">
-                                        Curso digital
+                            @if($ventaProducto->producto)
+                                <div class="d-flex align-items-center py-3 border-bottom">
+                                    <img src="{{ $ventaProducto->producto->image_path ? asset('img/productos/' . $ventaProducto->producto->image_path) : asset('img/webres/placeholder.svg') }}" 
+                                         alt="{{ $ventaProducto->producto->nombre }}" 
+                                         class="rounded me-3" 
+                                         style="width: 80px; height: 80px; object-fit: cover;"
+                                         onerror="this.src='{{ asset('img/webres/placeholder.svg') }}'">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">{{ $ventaProducto->producto->nombre }}</h6>
+                                        <p class="text-muted small mb-1">{{ $ventaProducto->producto->descripcion }}</p>
+                                        <span class="badge bg-secondary">{{ $ventaProducto->producto->categoria->nombre_categoria ?? 'Sin categoría' }}</span>
                                     </div>
-                                    <strong>${{ number_format($ventaProducto->precio_unitario, 2) }}</strong>
+                                    <div class="text-end">
+                                        <div class="text-muted small">
+                                            Curso digital
+                                        </div>
+                                        <strong>${{ number_format($ventaProducto->precio_unitario, 2) }}</strong>
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="d-flex align-items-center py-3 border-bottom">
+                                    <img src="{{ asset('img/webres/placeholder.svg') }}" 
+                                         alt="Producto no disponible" 
+                                         class="rounded me-3" 
+                                         style="width: 80px; height: 80px; object-fit: cover;">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">Producto no disponible</h6>
+                                        <p class="text-muted small mb-1">Este producto ya no está disponible en nuestro catálogo</p>
+                                        <span class="badge bg-warning">Producto eliminado</span>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="text-muted small">
+                                            Curso digital
+                                        </div>
+                                        <strong>${{ number_format($ventaProducto->precio_unitario, 2) }}</strong>
+                                    </div>
+                                </div>
+                            @endif
                         @endforeach
                     </div>
 

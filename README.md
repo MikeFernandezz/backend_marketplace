@@ -40,7 +40,7 @@ CourseMarket es un marketplace completo desarrollado en Laravel 12 para la venta
 
 ### Backend
 - **PHP 8.2+** con Laravel 12
-- **SQLite** para base de datos (configurable)
+- **MySQL** para base de datos (SQLite también soportado)
 - **Eloquent ORM** para interacciones con BD
 - **Middleware personalizado** para autenticación admin
 
@@ -79,7 +79,7 @@ backend_marketplace/
 ├── database/
 │   ├── migrations/                        # Migraciones de BD
 │   ├── seeders/                          # Datos de prueba
-│   └── database.sqlite                   # Base de datos SQLite
+│   └── database.sqlite                   # Base de datos SQLite (opcional)
 ├── resources/
 │   ├── views/                            # Vistas Blade
 │   ├── css/                              # CSS modular
@@ -98,7 +98,7 @@ backend_marketplace/
 - PHP 8.2 o superior
 - Composer
 - Node.js 18+ y NPM
-- SQLite (incluido con PHP)
+- **MySQL Server** (recomendado) o SQLite
 
 ### Pasos de Instalación
 
@@ -125,7 +125,30 @@ backend_marketplace/
    ```
 
 5. **Configurar la base de datos**
+
+   #### Opción A: MySQL (Recomendado para producción)
    ```bash
+   # Editar .env para configurar MySQL
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=marketplace_db
+   DB_USERNAME=tu_usuario
+   DB_PASSWORD=tu_contraseña
+   ```
+   
+   **Pasos adicionales para MySQL:**
+   1. Instalar MySQL Server
+   2. Crear base de datos: `CREATE DATABASE marketplace_db;`
+   3. Crear usuario y otorgar permisos
+   4. Ejecutar migraciones: `php artisan migrate`
+
+   #### Opción B: SQLite (Ideal para desarrollo)
+   ```bash
+   # Configuración por defecto en .env
+   DB_CONNECTION=sqlite
+   
+   # Crear archivo de base de datos
    touch database/database.sqlite
    php artisan migrate
    ```
@@ -144,12 +167,72 @@ backend_marketplace/
 
 8. **Sincronizar assets modulares**
    ```powershell
-   .\sync-assets.ps1
+   .\sync-assets-clean.ps1
    ```
 
 9. **Iniciar el servidor**
    ```bash
    php artisan serve
+   ```
+
+## 🗄️ Configuración de Base de Datos
+
+### MySQL vs SQLite
+
+#### MySQL (Recomendado)
+- **✅ Ventajas:**
+  - Mejor rendimiento para aplicaciones en producción
+  - Soporte completo para operaciones concurrentes
+  - Escalabilidad superior
+  - Funcionalidades avanzadas (vistas, procedimientos almacenados)
+  - Ideal para aplicaciones web con múltiples usuarios
+
+- **⚙️ Configuración:**
+  ```bash
+  # Instalar MySQL
+  # Windows: Descargar MySQL Installer
+  # macOS: brew install mysql
+  # Ubuntu: sudo apt install mysql-server
+  
+  # Configurar .env
+  DB_CONNECTION=mysql
+  DB_HOST=127.0.0.1
+  DB_PORT=3306
+  DB_DATABASE=marketplace_db
+  DB_USERNAME=tu_usuario
+  DB_PASSWORD=tu_contraseña
+  ```
+
+#### SQLite (Desarrollo)
+- **✅ Ventajas:**
+  - Configuración mínima
+  - Ideal para desarrollo y testing
+  - No requiere servidor separado
+  - Base de datos en archivo único
+
+- **⚙️ Configuración:**
+  ```bash
+  # Configurar .env
+  DB_CONNECTION=sqlite
+  
+  # Crear base de datos
+  touch database/database.sqlite
+  ```
+
+### Migración entre Bases de Datos
+
+Si necesitas cambiar de SQLite a MySQL:
+
+1. **Exportar datos existentes:**
+   ```bash
+   php artisan db:seed --class=DatabaseSeeder
+   ```
+
+2. **Configurar MySQL** según los pasos anteriores
+
+3. **Ejecutar migraciones:**
+   ```bash
+   php artisan migrate:fresh --seed
    ```
 
 ## 🎯 Uso del Sistema
@@ -328,9 +411,19 @@ php artisan migrate
 # Rollback migraciones
 php artisan migrate:rollback
 
+# Recrear base de datos con seeders
+php artisan migrate:fresh --seed
+
 # Seeders específicos
 php artisan db:seed --class=CarritoTestSeeder
 php artisan db:seed --class=CarritoTestSeederFixed
+
+# Verificar estado de migraciones
+php artisan migrate:status
+
+# Para MySQL: verificar conexión
+php artisan tinker
+# Luego: DB::connection()->getPdo();
 ```
 
 ### Testing

@@ -1,3 +1,0 @@
-<!-- Enlace al JS -->
-<script src="{{ asset('js/course-marketplace.js') }}"></script>
-@endsection

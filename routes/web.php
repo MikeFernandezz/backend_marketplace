@@ -92,7 +92,6 @@ Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout');
 Route::prefix('carrito')->group(function () {
     Route::post('/agregar', [CarritoController::class, 'agregarProducto'])->name('carrito.agregar');
     Route::get('/obtener', [CarritoController::class, 'obtenerCarrito'])->name('carrito.obtener');
-    // Route::put('/actualizar', [CarritoController::class, 'actualizarCantidad'])->name('carrito.actualizar'); // Deshabilitado para cursos digitales
     Route::delete('/eliminar/{producto_id}', [CarritoController::class, 'eliminarProducto'])->name('carrito.eliminar');
     Route::delete('/vaciar', [CarritoController::class, 'vaciarCarrito'])->name('carrito.vaciar');
 });
@@ -106,18 +105,3 @@ Route::get('/compra/{venta_id}/detalle', [CarritoController::class, 'mostrarDeta
 Route::get('/mis-compras', [CarritoController::class, 'misCompras'])->name('usuario.compras');
 
 require __DIR__.'/categoria.php';
-
-// API Routes para Ventas
-Route::prefix('api')->group(function () {
-    // CRUD básico de ventas
-    Route::get('ventas', [VentaController::class, 'index']);
-    Route::get('ventas/{id}', [VentaController::class, 'show']);
-    Route::post('ventas', [VentaController::class, 'store']);
-    Route::put('ventas/{id}', [VentaController::class, 'update']);
-    Route::delete('ventas/{id}', [VentaController::class, 'destroy']);
-    
-    // Rutas adicionales para manejo de productos en ventas
-    Route::get('ventas/{id}/productos', [VentaController::class, 'getProductos']);
-    Route::post('ventas/{id}/productos', [VentaController::class, 'addProducto']);
-    Route::delete('ventas/{ventaId}/productos/{productoId}', [VentaController::class, 'removeProducto']);
-});

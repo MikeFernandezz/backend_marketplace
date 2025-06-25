@@ -67,7 +67,7 @@
                                     <td>
                                         <span class="badge bg-primary">#{{ $venta->id_venta }}</span>
                                     </td>
-                                    <td>{{ $venta->usuario->nombre ?? 'Usuario no encontrado' }}</td>
+                                    <td>{{ $venta->usuario ? $venta->usuario->nombre . ' ' . $venta->usuario->apellidos : 'Usuario no encontrado' }}</td>
                                     <td>{{ $venta->usuario->correo ?? 'N/A' }}</td>
                                     <td>
                                         <small class="text-muted">

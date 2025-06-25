@@ -72,14 +72,7 @@ class CarritoController extends Controller
             'total' => $total,
             'cantidad_total' => $cantidad_total
         ]);
-    }    // Método deshabilitado - Los cursos digitales no permiten cambiar cantidad
-    // public function actualizarCantidad(Request $request)
-    // {
-    //     return response()->json([
-    //         'success' => false, 
-    //         'message' => 'No se puede modificar la cantidad de cursos digitales'
-    //     ]);
-    // }
+    }    
 
     public function eliminarProducto($producto_id)
     {

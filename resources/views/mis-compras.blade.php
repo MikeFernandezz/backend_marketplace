@@ -47,23 +47,40 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <div class="row">
+                                <div class="card-body">                                    <div class="row">
                                         @foreach($venta->ventaProductos->take(3) as $ventaProducto)
-                                            <div class="col-md-4 mb-3">                                                <div class="d-flex align-items-center">                                                    <img src="{{ $ventaProducto->producto->image_path ? asset('img/productos/' . $ventaProducto->producto->image_path) : asset('img/webres/placeholder.jpg') }}" 
-                                                         alt="{{ $ventaProducto->producto->nombre }}" 
-                                                         class="rounded me-3" 
-                                                         style="width: 60px; height: 60px; object-fit: cover;"
-                                                         onerror="this.src='{{ asset('img/webres/placeholder.jpg') }}'">                                                    <div class="flex-grow-1">
-                                                        <h6 class="mb-1">{{ $ventaProducto->producto->nombre }}</h6>
-                                                        <small class="text-muted">
-                                                            Curso digital - ${{ number_format($ventaProducto->precio_unitario, 2) }}
-                                                        </small>
-                                                        <br>
-                                                        <span class="badge bg-secondary small">
-                                                            {{ $ventaProducto->producto->categoria->nombre_categoria ?? 'Sin categoría' }}
-                                                        </span>
-                                                    </div>
+                                            <div class="col-md-4 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    @if($ventaProducto->producto)
+                                                        <img src="{{ $ventaProducto->producto->image_path ? asset('img/productos/' . $ventaProducto->producto->image_path) : asset('img/webres/placeholder.jpg') }}" 
+                                                             alt="{{ $ventaProducto->producto->nombre }}" 
+                                                             class="rounded me-3" 
+                                                             style="width: 60px; height: 60px; object-fit: cover;"
+                                                             onerror="this.src='{{ asset('img/webres/placeholder.jpg') }}'">
+                                                        <div class="flex-grow-1">
+                                                            <h6 class="mb-1">{{ $ventaProducto->producto->nombre }}</h6>
+                                                            <small class="text-muted">
+                                                                Curso digital - ${{ number_format($ventaProducto->precio_unitario, 2) }}
+                                                            </small>
+                                                            <br>
+                                                            <span class="badge bg-secondary small">
+                                                                {{ $ventaProducto->producto->categoria->nombre_categoria ?? 'Sin categoría' }}
+                                                            </span>
+                                                        </div>
+                                                    @else
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="{{ asset('img/webres/placeholder.jpg') }}" 
+                                                                 alt="Producto no disponible" 
+                                                                 class="rounded me-3" 
+                                                                 style="width: 60px; height: 60px; object-fit: cover;">
+                                                            <div class="flex-grow-1">
+                                                                <h6 class="mb-1">Producto no disponible</h6>
+                                                                <small class="text-muted">
+                                                                    Precio: ${{ number_format($ventaProducto->precio_unitario, 2) }}
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         @endforeach

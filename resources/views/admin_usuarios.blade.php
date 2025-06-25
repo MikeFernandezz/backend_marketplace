@@ -143,9 +143,8 @@
                                         <form action="{{ route('admin.usuarios.makeAdmin', $usuario->id_usuario) }}" 
                                               method="POST" class="d-inline">
                                             @csrf
-                                            @method('PATCH')
-                                            <button type="submit" class="btn btn-sm btn-success"
-                                                    onclick="return confirm('¿Confirmas otorgar permisos de administrador a {{ $usuario->nombre }}?')">
+                                            @method('PATCH')                                            <button type="submit" class="btn btn-sm btn-success"
+                                                    onclick="return confirm('¿Confirmas otorgar permisos de administrador a {{ $usuario->nombre }} {{ $usuario->apellidos }}?')">
                                                 <i class="fas fa-user-shield"></i> Hacer Admin
                                             </button>
                                         </form>
@@ -154,9 +153,8 @@
                                         <form action="{{ route('admin.usuarios.removeAdmin', $usuario->id_usuario) }}" 
                                               method="POST" class="d-inline">
                                             @csrf
-                                            @method('PATCH')
-                                            <button type="submit" class="btn btn-sm btn-warning"
-                                                    onclick="return confirm('¿Confirmas remover los permisos de administrador de {{ $usuario->nombre }}?')">
+                                            @method('PATCH')                                            <button type="submit" class="btn btn-sm btn-warning"
+                                                    onclick="return confirm('¿Confirmas remover los permisos de administrador de {{ $usuario->nombre }} {{ $usuario->apellidos }}?')">
                                                 <i class="fas fa-user-minus"></i> Remover Admin
                                             </button>
                                         </form>
@@ -167,9 +165,8 @@
                                     <form action="{{ route('admin.usuarios.destroy', $usuario->id_usuario) }}" 
                                           method="POST" class="d-inline">
                                         @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('¿Estás seguro de que deseas eliminar permanentemente a {{ $usuario->nombre }}? Esta acción no se puede deshacer.')">
+                                        @method('DELETE')                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                onclick="return confirm('¿Estás seguro de que deseas eliminar permanentemente a {{ $usuario->nombre }} {{ $usuario->apellidos }}? Esta acción no se puede deshacer.')">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>

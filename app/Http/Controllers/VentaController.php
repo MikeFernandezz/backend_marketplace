@@ -316,10 +316,9 @@ class VentaController extends Controller
             foreach ($ventas as $venta) {
                 $productos = $venta->ventaProductos->pluck('producto.nombre')->filter()->implode(', ');
                 $categorias = $venta->ventaProductos->pluck('producto.categoria.nombre_categoria')->filter()->unique()->implode(', ');
-                
-                fputcsv($file, [
+                  fputcsv($file, [
                     $venta->id_venta,
-                    $venta->usuario->nombre ?? 'N/A',
+                    $venta->usuario ? $venta->usuario->nombre . ' ' . $venta->usuario->apellidos : 'N/A',
                     $venta->usuario->correo ?? 'N/A',
                     $venta->fecha_venta ? $venta->fecha_venta->format('Y-m-d H:i:s') : 'N/A',
                     $venta->total,

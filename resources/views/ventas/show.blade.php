@@ -48,9 +48,8 @@
                 </div>
                 <div class="card-body">
                     @if($venta->usuario)
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p><strong>Nombre:</strong> {{ $venta->usuario->nombre }}</p>
+                        <div class="row">                            <div class="col-md-6">
+                                <p><strong>Nombre:</strong> {{ $venta->usuario->nombre }} {{ $venta->usuario->apellidos }}</p>
                                 <p><strong>Email:</strong> {{ $venta->usuario->correo }}</p>
                             </div>
                             <div class="col-md-6">

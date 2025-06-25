@@ -59,8 +59,7 @@ class UsuarioController extends Controller
         $request->validate([
             'correo' => 'required|email',
             'contrasena' => 'required|string',
-        ]);
-        $usuario = Usuario::where('correo', $request->correo)->first();
+        ]);        $usuario = Usuario::where('correo', $request->correo)->first();
         if ($usuario && Hash::check($request->contrasena, $usuario->contrasena)) {
             $request->session()->put('usuario_auth', $usuario->id_usuario);
             return redirect('/')->with('success', 'Bienvenido, ' . $usuario->nombre . '!');
